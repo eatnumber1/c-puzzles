@@ -9,8 +9,8 @@ struct foo {
 int main() {
 	struct foo a, b, c;
 
-	b = a;
-	c = a;
+	memcpy(&b, &a, sizeof(struct foo));
+	memcpy(&c, &a, sizeof(struct foo));
 
 	// Is this guaranteed to succeed?
 	assert(memcmp(&b, &c, sizeof(struct foo)) == 0);
